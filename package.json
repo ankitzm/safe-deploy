@@ -1,0 +1,19 @@
+{
+  "name": "safe-deploy",
+  "version": "1.0.0",
+  "description": "Simply deploy your Smart Contract without plugging your private key in you development environment.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ankitzm/safe-deploy.git"
+  },
+  "author": "Ankit Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ankitzm/safe-deploy/issues"
+  },
+  "homepage": "https://github.com/ankitzm/safe-deploy#readme"
+}

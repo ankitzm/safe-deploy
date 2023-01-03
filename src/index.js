@@ -9,7 +9,6 @@ const fileName = process.argv[2]
 app.use(express.static("./src/public"))
 
 app.get("/file", (req, res) => {
-	console.log(fileName, req)
 	readFile(fileName, (err, data) => {
 		if (err) {
 			console.error(err)

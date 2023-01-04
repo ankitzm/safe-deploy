@@ -1,24 +1,28 @@
 {
-  "name": "safe-deploy",
-  "version": "1.0.0",
-  "description": "Simply deploy your Smart Contract without plugging your private key in you development environment.",
-  "main": "./src/index.js",
-  "type": "module",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ankitzm/safe-deploy.git"
-  },
-  "author": "Ankit Singh",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ankitzm/safe-deploy/issues"
-  },
-  "homepage": "https://github.com/ankitzm/safe-deploy#readme",
-  "dependencies": {
-    "express": "^4.18.2",
-    "fs": "^0.0.1-security"
-  }
+	"name": "safe-deploy",
+	"version": "1.0.0",
+	"description": "Simply deploy your Smart Contract without plugging your private key in you development environment.",
+	"main": "./src/index.js",
+	"bin": {
+		"safe-deploy": "./src/index.js"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ankitzm/safe-deploy.git"
+	},
+	"author": "Ankit Singh",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/ankitzm/safe-deploy/issues"
+	},
+	"homepage": "https://github.com/ankitzm/safe-deploy#readme",
+	"dependencies": {
+		"ethers": "^5.7.2",
+		"express": "^4.18.2",
+		"fs": "^0.0.1-security",
+		"solc": "^0.8.17"
+	}
 }

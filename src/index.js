@@ -1,10 +1,12 @@
-"use strict";
+#!/usr/bin/env node
+"use strict"
 
 import express from "express"
 import { readFile } from "fs"
+import open from "open"
 
 const app = express()
-const port = 3000
+const port = 3030
 
 const fileName = process.argv[2]
 
@@ -24,4 +26,5 @@ app.get("/file", (req, res) => {
 
 app.listen(port, () => {
 	console.log(`Server listening on port ${port}`)
+	open(`http://localhost:${port}`)
 })

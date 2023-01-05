@@ -1,2 +1,8 @@
 # node modules
 node_modules
+
+# testing files
+artifacts
+test.txt
+package-lock.json
+src/public/deploy.js

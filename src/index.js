@@ -2,8 +2,9 @@
 "use strict"
 
 import express from "express"
-import { readFile } from "fs"
+import { readFile, readFileSync } from "fs"
 import open from "open"
+import solc from "solc"
 
 const app = express()
 const port = 3030
@@ -12,19 +13,40 @@ const fileName = process.argv[2]
 
 app.use(express.static("./src/public"))
 
-app.get("/file", (req, res) => {
-	readFile(fileName, (err, data) => {
-		if (err) {
-			console.error(err)
-			res.status(500).send(`Error reading file: ${err}`)
-			return
-		}
-
-		res.send(data.toString())
-	})
-})
-
 app.listen(port, () => {
 	console.log(`Server listening on port ${port}`)
 	open(`http://localhost:${port}`)
+})
+
+app.get("/file", (req, res) => {
+	const source = readFileSync(fileName, "utf8")
+
+	var input = {
+		language: "Solidity",
+		sources: {
+			solFile: {
+				content: source,
+			},
+		},
+		settings: {
+			outputSelection: {
+				"*": {
+					"*": ["*"],
+				},
+			},
+		},
+	}
+
+	var output = JSON.parse(solc.compile(JSON.stringify(input)))
+
+	// `output` here contains the JSON output as specified in the documentation
+	for (var contractName in output.contracts["solFile"]) {
+		var response = {
+			abi: output.contracts["solFile"][contractName].abi,
+			bytecode: `0x${output.contracts["solFile"][contractName].evm.bytecode.object}`,
+		}
+
+		// console.log(response)
+		res.send(response)
+	}
 })

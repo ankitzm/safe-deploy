@@ -19,8 +19,11 @@ app.listen(port, () => {
 })
 
 app.get("/file", (req, res) => {
-const source = readFileSync(fileName, "utf8")
-const updatedSource = source.replace(/^pragma solidity (.*);$/m, 'pragma solidity ^0.8.17;')	// compile every code with solidity version ^0.8.17
+	const source = readFileSync(fileName, "utf8")
+	const updatedSource = source.replace(
+		/^pragma solidity (.*);$/m,
+		"pragma solidity ^0.8.17;",
+	) // compile every code with solidity version ^0.8.17
 
 	var input = {
 		language: "Solidity",
@@ -48,6 +51,6 @@ const updatedSource = source.replace(/^pragma solidity (.*);$/m, 'pragma solidit
 		}
 
 		// console.log(response)
-		res.send(response)
+		res.send(response.abi)
 	}
 })

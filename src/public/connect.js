@@ -29,7 +29,7 @@ const getBinaryBtn = document.querySelector(".getBinaryButton")
 
 let binaryData
 fetch("/file")
-	.then(response => response.text())
+	.then(response => response.json())
 	.then(data => {
 		binaryData = data
 	})

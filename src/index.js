@@ -51,6 +51,6 @@ app.get("/file", (req, res) => {
 		}
 
 		// console.log(response)
-		res.send(response.abi)
+		res.send(response)
 	}
 })

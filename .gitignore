@@ -5,4 +5,3 @@ node_modules
 artifacts
 test.txt
 package-lock.json
-src/public/deploy.js

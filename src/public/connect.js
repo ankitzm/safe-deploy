@@ -21,7 +21,7 @@ async function getAccount() {
 	})
 
 	const account = accounts[0]
-	showAccount.innerHTML = account
+	showAccount.innerHTML = "Connected Account : " + account
 
 	ethereum.on("accountsChanged", function (account) {
 		console.log("account changed - " + account)

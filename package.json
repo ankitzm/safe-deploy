@@ -23,9 +23,7 @@
 	"dependencies": {
 		"express": "^4.18.2",
 		"fs": "^0.0.1-security",
-		"open": "^8.4.0"
-	},
-	"devDependencies": {
+		"open": "^8.4.0",
 		"solc": "^0.8.17"
 	}
 }

@@ -11,7 +11,7 @@ const port = 3030
 
 const fileName = process.argv[2]
 
-app.use(express.static("./src/public"))
+app.use(express.static("../safe-deploy/src/public"))
 
 app.listen(port, () => {
 	console.log(`Server listening on port ${port}`)

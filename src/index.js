@@ -13,11 +13,14 @@ const fileName = process.argv[2]
 
 app.use(express.static("../safe-deploy/src/public"))
 
-app.listen(port, () => {
-	console.log(`Server listening on port ${port}`)
-	open(`http://localhost:${port}`)
-})
-
+if (!fileName) {
+	console.log("no file argument provided")
+} else {
+	app.listen(port, () => {
+		console.log(`Server listening on port ${port}`)
+		open(`http://localhost:${port}`)
+	})
+}
 app.get("/file", (req, res) => {
 	const source = readFileSync(fileName, "utf8")
 	const updatedSource = source.replace(
@@ -28,7 +31,7 @@ app.get("/file", (req, res) => {
 	var input = {
 		language: "Solidity",
 		sources: {
-			solFile: {
+			"file.sol": {
 				content: updatedSource,
 			},
 		},
@@ -44,10 +47,10 @@ app.get("/file", (req, res) => {
 	var output = JSON.parse(solc.compile(JSON.stringify(input)))
 
 	// `output` here contains the JSON output as specified in the documentation
-	for (var contractName in output.contracts["solFile"]) {
+	for (var contractName in output.contracts["file.sol"]) {
 		var response = {
-			abi: output.contracts["solFile"][contractName].abi,
-			bytecode: `0x${output.contracts["solFile"][contractName].evm.bytecode.object}`,
+			abi: output.contracts["file.sol"][contractName].abi,
+			bytecode: `0x${output.contracts["file.sol"][contractName].evm.bytecode.object}`,
 		}
 
 		// console.log(response)

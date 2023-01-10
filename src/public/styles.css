@@ -119,3 +119,56 @@ body {
 	font-weight: 600;
 	font-size: 16px;
 }
+
+/* toast */
+
+#toast {
+	visibility: hidden;
+	margin: 0px;
+	min-width: 200px;
+	font-size: 16px; 
+	font-weight: 600;
+	border: none;
+	outline: none;
+	height: 20px;
+	background-color: #333;
+	 color: #fff; 
+	 text-align: center;
+	 border-radius: 2px;
+	 padding: 12px;
+	 position: fixed;
+	 z-index: 1;
+	 bottom: 0px;
+	 left: 10px;
+	 border-radius: 10px 10px 0px 0px;
+	 cursor: pointer;
+   }
+   
+   /* Show the toast when clicking on a button (class added with JavaScript) */
+   #toast.show {
+	visibility: visible;
+   -webkit-animation: fadein 0.5s, fadeout 0.5s 5s;
+	animation: fadein 0.5s, fadeout 0.5s 5s;
+   }
+   
+   /* Animations to fade the toast in and out */
+
+   @-webkit-keyframes fadein {
+	 from {bottom: 0; opacity: 0;}
+	 to {bottom: 8px; opacity: 1;}
+   }
+   
+   @keyframes fadein {
+	   from {bottom: 0; opacity: 0;}
+	   to {bottom: 8px; opacity: 1;}
+	 }
+
+   @-webkit-keyframes fadeout {
+	from {bottom: 0px; opacity: 1;}
+	to {bottom: -10px; opacity: 0;}
+   }
+   
+   @keyframes fadeout {
+	   from {bottom: 0px; opacity: 1;}
+	   to {bottom: -10px; opacity: 0;}
+	  }

@@ -6,8 +6,8 @@ if (typeof ethereum !== "undefined") {
 	console.log("not enabled")
 }
 
-const ethereumButton = document.querySelector(".enableEthereumButton")
-const showAccount = document.querySelector(".showAccount")
+const ethereumButton = document.getElementById("enableEthereumButton")
+const showAccount = document.getElementById("showAccount")
 
 ethereumButton.addEventListener("click", () => {
 	getAccount()
@@ -32,7 +32,7 @@ async function getAccount() {
 
 var binaryData
 
-const getBinaryBtn = document.querySelector(".getBinaryButton")
+const getBinaryBtn = document.getElementById("getBinaryButton")
 
 fetch("/file")
 	.then(response => response.json())
@@ -46,7 +46,7 @@ getBinaryBtn.addEventListener("click", () => {
 
 // deloy smart contract
 
-const deployBtn = document.querySelector(".deployBtn")
+const deployBtn = document.getElementById("deployBtn")
 
 deployBtn.addEventListener("click", () => {
 	fetch("/file")

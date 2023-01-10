@@ -4,6 +4,7 @@
 import express from "express"
 import { readFile, readFileSync } from "fs"
 import open from "open"
+import path from "path"
 import solc from "solc"
 
 const app = express()
@@ -11,7 +12,7 @@ const port = 3030
 
 const fileName = process.argv[2]
 
-app.use(express.static("../safe-deploy/src/public"))
+app.use(express.static(path.join(process.cwd(), "node_modules/safe-deploy/src/public")))
 
 if (!fileName) {
 	console.log("no file argument provided")
@@ -21,6 +22,7 @@ if (!fileName) {
 		open(`http://localhost:${port}`)
 	})
 }
+
 app.get("/file", (req, res) => {
 	const source = readFileSync(fileName, "utf8")
 	const updatedSource = source.replace(

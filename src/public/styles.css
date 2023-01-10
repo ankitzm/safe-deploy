@@ -29,7 +29,7 @@ body {
 .btn {
 	padding: 16px 24px;
     margin: 10px 0px;
-	width: 220px;
+	width: 240px;
     font-weight: 600;
     font-size: large;
 	border: none;
@@ -104,21 +104,66 @@ body {
 	transition: 100ms;
 }
 
-.showAccount {
+#showAccount {
     position: absolute;
     top: 20px;
     right: 20px;
 }
 
+#deployBtn {
+	display: none;
+}
+
+.github {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	top: 15px;
+	left: 20px;
+	font-size: 15px;
+}
+
+.github a {
+	position: relative;
+	display: inline-block;
+}
+
+.github .tooltip {
+	visibility: hidden;
+	width: 120px;
+	background-color: black;
+	color: #fff;
+	text-align: center;
+	padding: 5px 0;
+	border-radius: 6px;
+	position: absolute;
+	z-index: 1;
+	left: 50px;
+}
+
+.github:hover .tooltip {
+	visibility: visible;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
 .social {
-	display: block;
 	position: absolute;
 	align-content: center;
 	bottom: 20px;
 	font-family: sans-serif;
 	font-weight: 600;
-	font-size: 16px;
+	font-size: 18px;
+	color: #003641;
 }
+
+.social .name {
+	color: #000000;
+}
+
 
 /* toast */
 
@@ -126,12 +171,12 @@ body {
 	visibility: hidden;
 	margin: 0px;
 	min-width: 200px;
-	font-size: 16px; 
+	font-size: 18px; 
 	font-weight: 600;
 	border: none;
 	outline: none;
 	height: 20px;
-	background-color: #333;
+	background-color: rgb(46, 46, 46);
 	 color: #fff; 
 	 text-align: center;
 	 border-radius: 2px;

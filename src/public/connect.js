@@ -1,6 +1,12 @@
 if (typeof ethereum !== "undefined") {
 	// MetaMask is installed and enabled
 	console.log("eth object is available")
+	console.log(ethereum);
+
+	//   ethereum.sendAsync('eth_requestAccounts').then(function(networkId) {
+	// 	// Update the network display
+	// 	document.getElementById('network-display').innerHTML = 'Connected to network: ' + networkId;
+	//   });
 } else {
 	// MetaMask is not installed or enabled
 	console.log("not enabled")
@@ -10,6 +16,7 @@ const ethereumButton = document.getElementById("enableEthereumButton")
 const showAccount = document.getElementById("showAccount")
 const deployBtn = document.getElementById("deployBtn")
 const getBinaryBtn = document.getElementById("getBinaryButton")
+const networkDisplay = document.getElementById('network-display')
 var binaryData
 
 fetch("/file")
@@ -71,6 +78,10 @@ deployBtn.addEventListener("click", () => {
 	}
 })
 
+ethereum.on('chainChanged', function(networkId) {
+	// Update the network display
+	document.getElementById('network-display').innerHTML = 'Connected to network: ' + networkId;
+  });
 
 function toast(message) {
     var x = document.getElementById("toast");

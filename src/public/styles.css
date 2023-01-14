@@ -104,8 +104,12 @@ body {
 	transition: 100ms;
 }
 
-#showAccount {
+#data {
     position: absolute;
+	display: flex;
+	flex-direction: column;
+	text-align: end;
+	gap: 15px;
     top: 20px;
     right: 20px;
 }

@@ -1,12 +1,6 @@
 if (typeof ethereum !== "undefined") {
 	// MetaMask is installed and enabled
 	console.log("eth object is available")
-	console.log(ethereum);
-
-	//   ethereum.sendAsync('eth_requestAccounts').then(function(networkId) {
-	// 	// Update the network display
-	// 	document.getElementById('network-display').innerHTML = 'Connected to network: ' + networkId;
-	//   });
 } else {
 	// MetaMask is not installed or enabled
 	console.log("not enabled")
@@ -16,7 +10,7 @@ const ethereumButton = document.getElementById("enableEthereumButton")
 const showAccount = document.getElementById("showAccount")
 const deployBtn = document.getElementById("deployBtn")
 const getBinaryBtn = document.getElementById("getBinaryButton")
-const networkDisplay = document.getElementById('network-display')
+const networkDisplay = document.getElementById("network-display")
 var binaryData
 
 fetch("/file")
@@ -44,10 +38,12 @@ async function getAccount() {
 	})
 
 	if (account) {
-		ethereumButton.innerHTML = "Wallet Connected ⚡"	
-		toast('⚡ Wallet Connected')
+		ethereumButton.innerHTML = "Wallet Connected ⚡"
+		toast("⚡ Wallet Connected")
 		deployBtn.style.display = "block"
+		networkDisplay.innerHTML = "Connected to network ID: " + ethereum.chainId
 	}
+
 }
 
 // get binary
@@ -78,16 +74,18 @@ deployBtn.addEventListener("click", () => {
 	}
 })
 
-ethereum.on('chainChanged', function(networkId) {
+ethereum.on("chainChanged", function (networkId) {
 	// Update the network display
-	document.getElementById('network-display').innerHTML = 'Connected to network: ' + networkId;
-  });
+	networkDisplay.innerHTML = "Connected to network: " + networkId
+})
 
 function toast(message) {
-    var x = document.getElementById("toast");
+	var x = document.getElementById("toast")
 	x.innerHTML = message
-	x.className = "show";
-	
+	x.className = "show"
+
 	// After 5.5 seconds, remove the show class from DIV
-	setTimeout(function () { x.className = x.className.replace("show", ""); }, 5500);
+	setTimeout(function () {
+		x.className = x.className.replace("show", "")
+	}, 5500)
 }

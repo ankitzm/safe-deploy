@@ -31,19 +31,28 @@ async function getAccount() {
 	})
 
 	const account = accounts[0]
-	showAccount.innerHTML = "Connected Account : " + account
+	showAccount.innerHTML =
+		"Connected Account : " +
+		account.slice(0, 4) +
+		" ... " +
+		account.slice(-4)
 
 	ethereum.on("accountsChanged", function (account) {
 		console.log("account changed - " + account)
+		showAccount.innerHTML =
+			"Connected Account : " +
+			account.toString().slice(0, 4) +
+			"..." +
+			accounttoString().slice(-4)
 	})
 
 	if (account) {
 		ethereumButton.innerHTML = "Wallet Connected ⚡"
 		toast("⚡ Wallet Connected")
 		deployBtn.style.display = "block"
-		networkDisplay.innerHTML = "Connected to network ID: " + ethereum.chainId
+		networkDisplay.innerHTML =
+			"Connected Network : " + ethereum.chainId
 	}
-
 }
 
 // get binary
@@ -76,7 +85,7 @@ deployBtn.addEventListener("click", () => {
 
 ethereum.on("chainChanged", function (networkId) {
 	// Update the network display
-	networkDisplay.innerHTML = "Connected to network: " + networkId
+	networkDisplay.innerHTML = "Connected Network : " + networkId
 })
 
 function toast(message) {

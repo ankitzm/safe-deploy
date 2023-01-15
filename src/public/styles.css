@@ -109,7 +109,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	text-align: end;
-	gap: 15px;
+	gap: 12px;
     top: 20px;
     right: 20px;
 }

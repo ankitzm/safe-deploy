@@ -34,7 +34,7 @@ async function getAccount() {
 	showAccount.innerHTML =
 		"Connected Account : " +
 		account.slice(0, 4) +
-		" ... " +
+		"..." +
 		account.slice(-4)
 
 	ethereum.on("accountsChanged", function (account) {
@@ -43,15 +43,14 @@ async function getAccount() {
 			"Connected Account : " +
 			account.toString().slice(0, 4) +
 			"..." +
-			accounttoString().slice(-4)
+			account.toString().slice(-4)
 	})
 
 	if (account) {
 		ethereumButton.innerHTML = "Wallet Connected ⚡"
 		toast("⚡ Wallet Connected")
 		deployBtn.style.display = "block"
-		networkDisplay.innerHTML =
-			"Connected Network : " + ethereum.chainId
+		showNetwork(ethereum.networkVersion)
 	}
 }
 
@@ -83,9 +82,8 @@ deployBtn.addEventListener("click", () => {
 	}
 })
 
-ethereum.on("chainChanged", function (networkId) {
-	// Update the network display
-	networkDisplay.innerHTML = "Connected Network : " + networkId
+ethereum.on("chainChanged", function (networkVersion) {
+	showNetwork(networkVersion)
 })
 
 function toast(message) {
@@ -97,4 +95,22 @@ function toast(message) {
 	setTimeout(function () {
 		x.className = x.className.replace("show", "")
 	}, 5500)
+}
+
+function showNetwork(networkId) {
+	fetch("chainIdList.json")
+		.then(res => res.json())
+		.then(data => {
+			data.map(chain => {
+				if (chain.chainId == networkId) {
+					networkDisplay.innerHTML = "Network : " + chain.name
+					if (chain.name.includes("Mainnet")) {
+						toast("WARNING - Mainnet Connected")
+						networkDisplay.style.color = 'red'
+					} else {
+						networkDisplay.style.color = ''
+					}
+				}
+			})
+		})
 }

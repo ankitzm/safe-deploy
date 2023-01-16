@@ -6,20 +6,26 @@ import { readFile, readFileSync } from "fs"
 import open from "open"
 import path from "path"
 import solc from "solc"
+import getPort, { portNumbers } from "get-port"
 
 const app = express()
-const port = 3030
 
 const fileName = process.argv[2]
 
-app.use(express.static(path.join(process.cwd(), "node_modules/safe-deploy/src/public")))
+app.use(
+	express.static(
+		path.join(process.cwd(), "node_modules/safe-deploy/src/public"),
+	),
+)
 
 if (!fileName) {
 	console.log("no file argument provided")
 } else {
-	app.listen(port, () => {
-		console.log(`Server listening on port ${port}`)
-		open(`http://localhost:${port}`)
+	getPort({ port: portNumbers(3000, 3100) }).then(port => {
+		app.listen(port, () => {
+			console.log(`Server listening on port ${port}`)
+			open(`http://localhost:${port}`)
+		})
 	})
 }
 

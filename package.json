@@ -23,6 +23,7 @@
 	"dependencies": {
 		"express": "^4.18.2",
 		"fs": "^0.0.1-security",
+		"get-port": "^6.1.2",
 		"open": "^8.4.0",
 		"solc": "^0.8.17"
 	}

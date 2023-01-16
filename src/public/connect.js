@@ -37,6 +37,7 @@ async function getAccount() {
 		"..." +
 		account.slice(-4)
 
+	// update frontend on account change
 	ethereum.on("accountsChanged", function (account) {
 		console.log("account changed - " + account)
 		showAccount.innerHTML =
@@ -86,6 +87,8 @@ ethereum.on("chainChanged", function (networkVersion) {
 	showNetwork(networkVersion)
 })
 
+// toast
+
 function toast(message) {
 	var x = document.getElementById("toast")
 	x.innerHTML = message
@@ -96,6 +99,8 @@ function toast(message) {
 		x.className = x.className.replace("show", "")
 	}, 5500)
 }
+
+// search for network name from 'chainIdList.json'
 
 function showNetwork(networkId) {
 	fetch("chainIdList.json")

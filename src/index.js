@@ -21,6 +21,7 @@ app.use(
 if (!fileName) {
 	console.log("no file argument provided")
 } else {
+	// automatically select free port after 3000
 	getPort({ port: portNumbers(3000, 3100) }).then(port => {
 		app.listen(port, () => {
 			console.log(`Server listening on port ${port}`)

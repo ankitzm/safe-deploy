@@ -1,3 +1,5 @@
+const deployedContract = document.getElementById("deployedContract")
+
 function deploy(bytecode) {
 	ethereum
 		.request({
@@ -13,6 +15,10 @@ function deploy(bytecode) {
 				},
 			],
 		})
-		.then(txHash => console.log(txHash))
+		.then(txHash => {
+			console.log(txHash)
+			toast("deployed 🥳")
+			deployedContract.innerHTML = "Deployed here - " + txHash + " ✌️"
+		})
 		.catch(error => console.error)
 }

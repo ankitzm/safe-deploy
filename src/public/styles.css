@@ -168,6 +168,11 @@ a {
 	color: #000000;
 }
 
+/* // deployed contract address */
+#deployedContract {
+	margin-top: 16px;
+	font-size: large;
+}
 
 /* toast */
 

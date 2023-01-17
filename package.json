@@ -1,6 +1,6 @@
 {
 	"name": "safe-deploy",
-	"version": "1.1.8",
+	"version": "1.1.9",
 	"description": "Simply deploy your Smart Contract without plugging your private key in you development environment.",
 	"main": "./src/index.js",
 	"bin": {

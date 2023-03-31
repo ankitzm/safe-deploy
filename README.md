@@ -2,6 +2,7 @@
 Simply deploy your Smart Contract without plugging your private key in you development environment. <br />
 Browser based smart contract deployment using metamask wallet by using local solidity files on your computer.
 
+**Demo** : https://www.youtube.com/watch?v=a253m9YGEqM
 ### Usage
 
 1. Locate to the folder with solidity file/'s in your Local System.
